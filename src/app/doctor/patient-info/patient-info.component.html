@@ -1,0 +1,68 @@
+<mat-card class="card">
+  <mat-card-header>
+    <mat-card-title>CARD ID:{{card?.cardId}}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+
+    <div class="first-row">
+      <div class="input-column">
+        <img src="https://virtual-strategy.com/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png"
+          alt="Photo of a Patient" class="max-column">
+      </div>
+
+      <div class="input-column">
+        <mat-form-field class="max-column">
+          <input matInput placeholder="First Name" value="{{card?.patient.firstName}}">
+        </mat-form-field>
+
+        <mat-form-field class="max-column">
+          <input matInput placeholder="Last Name" value="{{card?.patient.lastName}}">
+        </mat-form-field>
+
+        <mat-form-field class="max-column">
+          <input matInput placeholder="Age">
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="second-row">
+      <mat-form-field class="max-column">
+        <mat-icon matSuffix>phone</mat-icon>
+        <input matInput placeholder="Phone" value="{{card?.patient.phone}}">
+      </mat-form-field>
+
+      <mat-form-field class="max-column">
+        <mat-icon matSuffix>location_city</mat-icon>
+        <input matInput placeholder="Adress" value="{{card?.patient.adress}}">
+      </mat-form-field>
+
+      <mat-form-field class="max-column">
+        <mat-icon matSuffix>account_box</mat-icon>
+        <input matInput placeholder="LBO" value="{{card?.patient.lbo}}">
+      </mat-form-field>
+    </div>
+
+    <div class="third-row">
+      <mat-form-field class="max-column">
+        <input matInput placeholder="Input">
+      </mat-form-field>
+    </div>
+
+    <div class="third-row">
+      <label>Allergenics</label>
+      <mat-chip-list>
+        <mat-chip>Penicilin</mat-chip>
+        <mat-chip>Alergomicin</mat-chip>
+        <mat-chip>Kataromin</mat-chip>
+        <mat-chip>Hmeljidit</mat-chip>
+        <mat-chip>Omegolizolit</mat-chip>
+        <mat-chip>Vitamin B18</mat-chip>
+      </mat-chip-list>
+    </div>
+
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>BACK</button>
+    <button mat-button>EXAM</button>
+  </mat-card-actions>
+</mat-card>

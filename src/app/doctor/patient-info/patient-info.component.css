@@ -1,0 +1,32 @@
+.card{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: flex-start;
+  max-width: 500px;
+}
+.mat-card-actions{
+  display: flex;
+  justify-content: space-between;
+}
+.first-row{
+  width:100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.second-row{
+   width:100%;
+   margin-bottom: 10px;
+}
+.third-row{
+  width:100%;
+  margin-bottom: 10px;
+}
+.max-column{
+  width:100%;
+}
+
+.input-column{
+  width:45%;
+}
