@@ -15,34 +15,36 @@
       </mat-form-field>
 
       <mat-form-field class="right-column">
-        <input readonly matInput placeholder="Doctor" value="Dr Milisav">
+        <input readonly matInput placeholder="Doctor" [(ngModel)]="refferal.doctorName">
       </mat-form-field>
     </div>
 
     <div class="first-row">
       <mat-form-field class="left-column">
-        <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" placeholder="Date of Expiry">
+        <input matInput [(ngModel)]="refferal.data" [min]="minDate" [max]="maxDate" [matDatepicker]="picker"
+          placeholder="Date of Expiry">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
 
       <mat-form-field class="middle-column">
-        <textarea matInput placeholder="Note" rows="1" cols="50"></textarea>
+        <textarea matInput [(ngModel)]="refferal.note" placeholder="Note" rows="1" cols="50"></textarea>
       </mat-form-field>
 
       <mat-form-field class="right-column">
-        <input readonly matInput placeholder="Reffering MD" value="Hirurgija">
+        <input readonly matInput [(ngModel)]="refferal.refferingMD" placeholder="Reffering MD" value="Hirurgija">
       </mat-form-field>
     </div>
 
     <div class="third-row">
       <mat-form-field class="max-column">
-        <textarea matInput placeholder="Description od Problem" rows="7" cols="50"></textarea>
+        <textarea matInput [(ngModel)]="refferal.descriptionOfProblem" placeholder="Description od Problem" rows="7"
+          cols="50"></textarea>
       </mat-form-field>
     </div>
 
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button>PRINT</button>
+    <button mat-button (click)="addRefferal()">PRINT</button>
   </mat-card-actions>
 </mat-card>

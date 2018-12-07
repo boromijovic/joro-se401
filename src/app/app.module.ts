@@ -11,7 +11,7 @@ import {
   MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule,
   MatListModule, MatGridListModule, MatCardModule, MatMenuModule, MatTableModule,
   MatPaginatorModule, MatSortModule, MatFormFieldModule, MatInputModule, MatChipsModule,
-  MatDividerModule, MatDatepickerModule, MatNativeDateModule
+  MatDividerModule, MatDatepickerModule, MatNativeDateModule, MatSnackBarModule
 } from '@angular/material';
 import { MyDashboardComponent } from './my-dashboard/my-dashboard.component';
 import { NameComponent } from './name/name.component';
@@ -83,7 +83,8 @@ const appRoutes: Routes = [
     MatDividerModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    FormsModule,
+    MatSnackBarModule,
+    FormsModule
   ],
 
   exports: [

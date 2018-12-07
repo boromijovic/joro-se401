@@ -6,37 +6,38 @@
 
     <div class="first-row">
       <mat-form-field class="left-column" style="align-self: flex-start">
-        <input matInput placeholder="TherapyID" value="123">
+        <input readonly matInput placeholder="TherapyID" value="123">
       </mat-form-field>
 
       <mat-form-field class="right-column" style="align-self: flex-end">
-        <input readonly matInput placeholder="Data of Exam" value="{{objDate | date :'mediumDate'}} ">
+        <input readonly matInput placeholder="Data of Exam" value="{{objDate | date :'mediumDate'}}">
       </mat-form-field>
     </div>
 
     <div class="second-row">
       <mat-form-field class="max-column">
-        <textarea matInput placeholder="Therapy" rows="7" cols="50"></textarea>
+        <textarea matInput placeholder="Description" rows="4" cols="50" [(ngModel)]="therapy.description"></textarea>
       </mat-form-field>
     </div>
 
     <div class="third-row">
       <div class="max-column">
         <mat-form-field class="max-column">
-          <textarea matInput placeholder="Symptoms" rows="4" cols="50"></textarea>
+          <textarea matInput placeholder="Symptoms" rows="4" cols="50" [(ngModel)]="therapy.symptoms"></textarea>
         </mat-form-field>
       </div>
 
       <div class="max-column">
         <mat-form-field class="max-column">
-          <textarea matInput placeholder="Description" rows="4" cols="50"></textarea>
+          <textarea matInput placeholder="Comments" rows="7" cols="50" [(ngModel)]="therapy.comments"></textarea>
         </mat-form-field>
       </div>
+
     </div>
 
   </mat-card-content>
   <mat-card-actions>
     <button mat-button (click)="patientPrescription()">PRESCRIPTION</button>
-    <button mat-button>CONFIRM</button>
+    <button mat-button (click)="addTherapy()">CONFIRM</button>
   </mat-card-actions>
 </mat-card>
