@@ -16,4 +16,8 @@ export class PatientService {
     return this.http.get(this.serviceUrl).map(
       (res ) =>  res['pacijenti']);
   }
+  
+  addPatient(patient: Patient): Observable<Patient> {
+    return this.http.post<Patient>(this.serviceUrl, patient);
+  }
 }

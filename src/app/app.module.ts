@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { FormsModule } from '@angular/forms'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MyNavComponent } from './my-nav/my-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
@@ -22,6 +23,7 @@ import { PatientExamComponent } from './doctor/patient-exam/patient-exam.compone
 import { PatientPrescriptionComponent } from './doctor/patient-prescription/patient-prescription.component';
 import { PatientRefferalComponent } from './doctor/patient-refferal/patient-refferal.component';
 /*        */
+import { PatientAddComponent } from './nurse/patient-add/patient-add.component';
 import { FirstPageComponent } from './first-page/first-page.component';
 import { SecondPageComponent } from './second-page/second-page.component';
 import { ThirdPageComponent } from './third-page/third-page.component';
@@ -37,7 +39,8 @@ const appRoutes: Routes = [
   { path: 'patient/:id', component: PatientInfoComponent },
   { path: 'patient/:id/exam', component: PatientExamComponent },
   { path: 'patient/:id/prescription', component: PatientPrescriptionComponent },
-  { path: 'patient/:id/refferal', component: PatientRefferalComponent }
+  { path: 'patient/:id/refferal', component: PatientRefferalComponent },
+  { path: 'add-patient', component: PatientAddComponent },
 ];
 
 @NgModule({
@@ -48,6 +51,7 @@ const appRoutes: Routes = [
     NameComponent,
     PatientsDoctorComponent,
     PatientInfoComponent,
+    PatientAddComponent,
     PatientExamComponent,
     PatientPrescriptionComponent,
     PatientRefferalComponent,
@@ -78,7 +82,8 @@ const appRoutes: Routes = [
     MatChipsModule,
     MatDividerModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    FormsModule,
   ],
 
   exports: [
