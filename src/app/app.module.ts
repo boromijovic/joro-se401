@@ -22,6 +22,8 @@ import { PatientInfoComponent } from './doctor/patient-info/patient-info.compone
 import { PatientExamComponent } from './doctor/patient-exam/patient-exam.component';
 import { PatientPrescriptionComponent } from './doctor/patient-prescription/patient-prescription.component';
 import { PatientRefferalComponent } from './doctor/patient-refferal/patient-refferal.component';
+/*    Authentication    */
+// import { AuthenticationModule } from './authentication/authentication.module';
 /*        */
 import { PatientAddComponent } from './nurse/patient-add/patient-add.component';
 import { FirstPageComponent } from './first-page/first-page.component';
@@ -30,18 +32,19 @@ import { ThirdPageComponent } from './third-page/third-page.component';
 /* Services */
 import { PatientService } from './service/patient.service';
 import { CardService } from './service/card.service';
-/*         */
-const appRoutes: Routes = [
-  { path: 'patients', component: PatientsDoctorComponent },
-  { path: 'first-page', component: FirstPageComponent },
-  { path: 'second-page', component: SecondPageComponent },
-  { path: 'third-page', component: ThirdPageComponent },
-  { path: 'patient/:id', component: PatientInfoComponent },
-  { path: 'patient/:id/exam', component: PatientExamComponent },
-  { path: 'patient/:id/prescription', component: PatientPrescriptionComponent },
-  { path: 'patient/:id/refferal', component: PatientRefferalComponent },
-  { path: 'add-patient', component: PatientAddComponent },
-];
+// /*         */
+// const appRoutes: Routes = [
+//   { path: 'patients', component: PatientsDoctorComponent },
+//   { path: 'first-page', component: FirstPageComponent },
+//   { path: 'second-page', component: SecondPageComponent },
+//   { path: 'third-page', component: ThirdPageComponent },
+//   { path: 'patient/:id', component: PatientInfoComponent },
+//   { path: 'patient/:id/exam', component: PatientExamComponent },
+//   { path: 'patient/:id/prescription', component: PatientPrescriptionComponent },
+//   { path: 'patient/:id/refferal', component: PatientRefferalComponent },
+//   { path: 'add-patient', component: PatientAddComponent },
+//   // { path: '', component: LoginPageComponent }
+// ];
 
 @NgModule({
   declarations: [
@@ -52,6 +55,7 @@ const appRoutes: Routes = [
     PatientsDoctorComponent,
     PatientInfoComponent,
     PatientAddComponent,
+    // LoginPageComponent,
     PatientExamComponent,
     PatientPrescriptionComponent,
     PatientRefferalComponent,
@@ -76,7 +80,7 @@ const appRoutes: Routes = [
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    RouterModule.forRoot(appRoutes),
+    // RouterModule.forRoot(appRoutes),
     MatFormFieldModule,
     MatInputModule,
     MatChipsModule,
@@ -84,7 +88,8 @@ const appRoutes: Routes = [
     MatDatepickerModule,
     MatNativeDateModule,
     MatSnackBarModule,
-    FormsModule
+    FormsModule,
+    // AuthenticationModule
   ],
 
   exports: [
