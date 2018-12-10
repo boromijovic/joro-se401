@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { CardService } from 'src/app/service/card.service';
 import { Card } from 'src/app/models/card.model';
 import { FormControl } from '@angular/forms';
@@ -14,6 +14,8 @@ export class PatientPrescriptionComponent implements OnInit {
   card: Card;
   objDate = Date.now();
   prescription: any;
+  name: any;
+  patientId: any;
 
   date = new FormControl(new Date());
   minDate = new Date(this.objDate);
@@ -22,10 +24,19 @@ export class PatientPrescriptionComponent implements OnInit {
   constructor(
     private cardService: CardService,
     private router: Router,
-    private snackBar: MatSnackBar) {
+    private snackBar: MatSnackBar,
+    private route: ActivatedRoute) {
   }
 
   ngOnInit() {
+    let id = this.route.snapshot.paramMap.get('id');
+    this.cardService.getCardByPatientsId(id).subscribe(
+      data => {
+        this.card = data;
+        this.name = this.card.patient.firstName + ' ' + this.card.patient.lastName;
+        this.patientId = this.card.patient.id;
+      }
+    );
     this.initPrescriptionModel();
   }
 
@@ -39,9 +50,7 @@ export class PatientPrescriptionComponent implements OnInit {
     }
   }
   public addPrescription() {
-    console.log('DATUM ' + this.date.value);
-
-    this.cardService.addPrescriptionForPatient(this.prescription, 1).subscribe(
+    this.cardService.addPrescriptionForPatient(this.prescription, this.patientId).subscribe(
       (data) =>
         this.snackBar.open("Successfully added prescription", "DONE", {
           duration: 2000,
@@ -49,4 +58,7 @@ export class PatientPrescriptionComponent implements OnInit {
     );
   }
 
+  public back() {
+    this.router.navigate(['patient', this.patientId, 'exam']);
+  }
 }

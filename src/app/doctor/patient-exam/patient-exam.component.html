@@ -6,7 +6,7 @@
 
     <div class="first-row">
       <mat-form-field class="left-column" style="align-self: flex-start">
-        <input readonly matInput placeholder="TherapyID" value="123">
+        <input readonly matInput placeholder="Patient Name" value="{{name}}">
       </mat-form-field>
 
       <mat-form-field class="right-column" style="align-self: flex-end">
@@ -37,7 +37,8 @@
 
   </mat-card-content>
   <mat-card-actions>
+    <button mat-button (click)="patientRefferal()">REFFERAL</button>
     <button mat-button (click)="patientPrescription()">PRESCRIPTION</button>
-    <button mat-button (click)="addTherapy()">CONFIRM</button>
+    <button mat-button (click)="addTherapy()">PRINT</button>
   </mat-card-actions>
 </mat-card>

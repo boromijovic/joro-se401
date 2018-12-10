@@ -6,7 +6,7 @@
 
     <div class="first-row">
       <mat-form-field class="left-column">
-        <input matInput placeholder="PrescriptionID" value="123">
+        <input matInput placeholder="Patient Name" value="{{name}}">
       </mat-form-field>
 
       <mat-form-field class="middle-column">
@@ -39,7 +39,9 @@
     </div>
 
   </mat-card-content>
+
   <mat-card-actions>
+    <button mat-button (click)="back()">BACK</button>
     <button mat-button (click)="addPrescription()">PRINT</button>
   </mat-card-actions>
 </mat-card>

@@ -7,12 +7,17 @@ import { FormsModule } from '@angular/forms'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MyNavComponent } from './my-nav/my-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
+
+import { LoginPageComponent } from './login-page/login-page.component';
+import { AppMaterialModule } from './app-material/app-material.module';
+/* Material */
 import {
   MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule,
   MatListModule, MatGridListModule, MatCardModule, MatMenuModule, MatTableModule,
   MatPaginatorModule, MatSortModule, MatFormFieldModule, MatInputModule, MatChipsModule,
   MatDividerModule, MatDatepickerModule, MatNativeDateModule, MatSnackBarModule
 } from '@angular/material';
+/* */
 import { MyDashboardComponent } from './my-dashboard/my-dashboard.component';
 import { NameComponent } from './name/name.component';
 import { RouterModule, Routes } from '@angular/router';
@@ -26,25 +31,15 @@ import { PatientRefferalComponent } from './doctor/patient-refferal/patient-reff
 // import { AuthenticationModule } from './authentication/authentication.module';
 /*        */
 import { PatientAddComponent } from './nurse/patient-add/patient-add.component';
-import { FirstPageComponent } from './first-page/first-page.component';
-import { SecondPageComponent } from './second-page/second-page.component';
+import { PatientsComponent } from './patients/patients.component';
+import { StandardsComponent } from './standards/standards.component';
 import { ThirdPageComponent } from './third-page/third-page.component';
 /* Services */
 import { PatientService } from './service/patient.service';
 import { CardService } from './service/card.service';
-// /*         */
-// const appRoutes: Routes = [
-//   { path: 'patients', component: PatientsDoctorComponent },
-//   { path: 'first-page', component: FirstPageComponent },
-//   { path: 'second-page', component: SecondPageComponent },
-//   { path: 'third-page', component: ThirdPageComponent },
-//   { path: 'patient/:id', component: PatientInfoComponent },
-//   { path: 'patient/:id/exam', component: PatientExamComponent },
-//   { path: 'patient/:id/prescription', component: PatientPrescriptionComponent },
-//   { path: 'patient/:id/refferal', component: PatientRefferalComponent },
-//   { path: 'add-patient', component: PatientAddComponent },
-//   // { path: '', component: LoginPageComponent }
-// ];
+import { LoginService } from './service/login.service';
+import { AuthService } from './service/auth.service';
+import { AuthGuardService } from './service/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -55,13 +50,13 @@ import { CardService } from './service/card.service';
     PatientsDoctorComponent,
     PatientInfoComponent,
     PatientAddComponent,
-    // LoginPageComponent,
     PatientExamComponent,
     PatientPrescriptionComponent,
     PatientRefferalComponent,
-    FirstPageComponent,
-    SecondPageComponent,
-    ThirdPageComponent
+    PatientsComponent,
+    StandardsComponent,
+    ThirdPageComponent,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,
@@ -95,7 +90,7 @@ import { CardService } from './service/card.service';
   exports: [
     MatFormFieldModule,
   ],
-  providers: [PatientService, CardService],
+  providers: [PatientService, CardService, LoginService, AuthService, AuthGuardService],
   bootstrap: [AppComponent]
 }
 )

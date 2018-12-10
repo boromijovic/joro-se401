@@ -1,2 +1,2 @@
-<app-my-nav></app-my-nav>
-<!-- <router-outlet></router-outlet> -->
+<app-my-nav *ngIf="isLogged" [title]="title"></app-my-nav>
+<app-login-page *ngIf="!isLogged"></app-login-page>

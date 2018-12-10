@@ -52,7 +52,7 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef> Actions </th>
       <td mat-cell *matCellDef="let element">
-        <button mat-button>
+        <button mat-button (click)="exam(element.id)">
           <mat-icon>input</mat-icon> Exam
         </button>
         <button mat-button (click)="patientDetails(element.id)">

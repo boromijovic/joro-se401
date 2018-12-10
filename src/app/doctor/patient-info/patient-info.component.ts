@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { CardService } from 'src/app/service/card.service';
 import { Card } from 'src/app/models/card.model';
 
@@ -14,18 +14,23 @@ export class PatientInfoComponent implements OnInit {
 
   constructor(
     private cardService: CardService,
-    private router: Router) {
+    private router: Router,
+    private route: ActivatedRoute) {
   }
 
   ngOnInit() {
-    this.getPatientCard();
+    let id = this.route.snapshot.paramMap.get('id');
+    this.getPatientCard(id);
   }
 
-  getPatientCard() {
-    this.cardService.getCardByPatientsId(1).subscribe(
+  getPatientCard(id: any) {
+    this.cardService.getCardByPatientsId(id).subscribe(
       data => {
         this.card = data;
       }
     );
+  }
+  public back() {
+    this.router.navigate(['patient', this.patientId, 'exam']);
   }
 }

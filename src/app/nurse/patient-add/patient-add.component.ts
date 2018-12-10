@@ -34,7 +34,7 @@ export class PatientAddComponent implements OnInit {
   public addPatient() {
     this.patientService.addPatient(this.patient).subscribe(
       (data) =>
-        this.router.navigate(['patients'])
+        this.router.navigate(['third-page'])
     );
   }
 }

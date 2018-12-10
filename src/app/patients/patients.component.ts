@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
-import { PatientService } from '../../app/service/patient.service';
+import { PatientService } from '../service/patient.service';
 import { Router } from '@angular/router';
 import { Patient } from '../models/patient.model';
 
@@ -30,11 +30,11 @@ import { Patient } from '../models/patient.model';
 
 
 @Component({
-  selector: 'app-first-page',
-  templateUrl: './first-page.component.html',
-  styleUrls: ['./first-page.component.css']
+  selector: 'app-patients',
+  templateUrl: './patients.component.html',
+  styleUrls: ['./patients.component.css']
 })
-export class FirstPageComponent implements OnInit {
+export class PatientsComponent implements OnInit {
   displayedColumns: string[] = ['id', 'firstname', 'lastname', 'lbo', 'phone', 'adress', 'email', 'actions'];
   dataSource = new MatTableDataSource<Patient>();
 

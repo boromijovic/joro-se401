@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { CardService } from 'src/app/service/card.service';
-import { Card } from 'src/app/models/card.model';
-import { Therapy } from 'src/app/models/therapy.model';
 import { MatSnackBar } from '@angular/material';
+import { Card } from 'src/app/models/card.model';
 
 @Component({
   selector: 'app-patient-exam',
@@ -14,15 +13,25 @@ export class PatientExamComponent implements OnInit {
   card: Card;
   objDate: any;
   therapy: any;
-
+  name: any;
+  patientId: any;
 
   constructor(
     private cardService: CardService,
     private router: Router,
-    private snackBar: MatSnackBar) {
+    private snackBar: MatSnackBar,
+    private route: ActivatedRoute) {
   }
 
   ngOnInit() {
+    let id = this.route.snapshot.paramMap.get('id');
+    this.cardService.getCardByPatientsId(id).subscribe(
+      data => {
+        this.card = data;
+        this.name = this.card.patient.firstName + ' ' + this.card.patient.lastName;
+        this.patientId = this.card.patient.id;
+      }
+    );
     this.objDate = Date.now();
     this.initTherapyModel();
   }
@@ -37,10 +46,8 @@ export class PatientExamComponent implements OnInit {
   }
 
   public addTherapy() {
-    // let datum = new Date(this.objDate);
-    // console.log('DATUM ' + datum.toLocaleDateString('mediumDate'));
-
-    this.cardService.addTherapyForPatient(this.therapy, 1).subscribe(
+    console.log('Therapy > ' + this.therapy.description + ' ' + this.therapy.symptoms + '  ' + this.therapy.comments + ' ' + this.therapy.dataOfExam);
+    this.cardService.addTherapyForPatient(this.therapy, this.patientId).subscribe(
       (data) =>
         this.snackBar.open("Successfully added therapy", "DONE", {
           duration: 2000,
@@ -48,7 +55,11 @@ export class PatientExamComponent implements OnInit {
     );
   }
 
+  patientRefferal() {
+    this.router.navigate(['patient', this.patientId, 'refferal']);
+  }
+
   public patientPrescription() {
-    this.router.navigate(['patient', 1, 'prescription']);
+    this.router.navigate(['patient', this.patientId, 'prescription']);
   }
 }

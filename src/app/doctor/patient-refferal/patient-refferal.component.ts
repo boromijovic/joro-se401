@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { CardService } from 'src/app/service/card.service';
 import { Card } from 'src/app/models/card.model';
 import { FormControl } from '@angular/forms';
@@ -13,6 +13,8 @@ import { MatSnackBar } from '@angular/material';
 export class PatientRefferalComponent implements OnInit {
   card: Card;
   objDate = Date.now();
+  name: any;
+  patientId: any;
 
   refferal: any;
 
@@ -22,10 +24,19 @@ export class PatientRefferalComponent implements OnInit {
   constructor(
     private cardService: CardService,
     private router: Router,
-    private snackBar: MatSnackBar) {
+    private snackBar: MatSnackBar,
+    private route: ActivatedRoute) {
   }
 
   ngOnInit() {
+    let id = this.route.snapshot.paramMap.get('id');
+    this.cardService.getCardByPatientsId(id).subscribe(
+      data => {
+        this.card = data;
+        this.name = this.card.patient.firstName + ' ' + this.card.patient.lastName;
+        this.patientId = this.card.patient.id;
+      }
+    );
     this.initRefferalModel();
   }
 
@@ -40,11 +51,15 @@ export class PatientRefferalComponent implements OnInit {
     }
   }
   public addRefferal() {
-    this.cardService.addRefferalForPatient(this.refferal, 1).subscribe(
+    this.cardService.addRefferalForPatient(this.refferal, this.patientId).subscribe(
       (data) =>
         this.snackBar.open("Successfully added refferal", "DONE", {
           duration: 2000,
         })
     );
+  }
+
+  public back() {
+    this.router.navigate(['patient', this.patientId, 'exam']);
   }
 }
